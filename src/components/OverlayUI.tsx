@@ -112,7 +112,7 @@ function useCountdown() {
 /* =========================================================
    SCROLL REVEAL HOOK
    ========================================================= */
-function useScrollReveal() {
+function useScrollReveal(dep?: unknown) {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -334,7 +334,7 @@ export default function OverlayUI() {
                       {dayItems.map((item, idx) => (
                         <div
                           key={idx}
-                          className="itin-perf-card reveal-item"
+                          className="itin-perf-card"
                           data-delay={String(400 + dayIdx * 150 + idx * 80)}
                           style={{
                             '--accent': TYPE_COLORS[item.type],
