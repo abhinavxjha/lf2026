@@ -376,9 +376,15 @@ function StageMarker({ position, color, mobileSf }: {
    MAIN EXPORT
    ========================================================= */
 export default function CentralFeature() {
-  const { isMobile, sf } = useResponsive()
+  const { isMobile, isTablet, sf } = useResponsive()
   // shorthand for mobileSf prop
   const m = sf
+  const primaryHeadphonesPos1: [number, number, number] = (isMobile || isTablet)
+    ? [-6, 6, -4]
+    : [-6, 6, -4]
+  const primaryHeadphonesPos2: [number, number, number] = (isMobile || isTablet)
+    ? [4, 6, 6]
+    : [4, 6, 6]
 
   return (
     <group>
@@ -478,7 +484,7 @@ export default function CentralFeature() {
       {/* ── UPPER FLOATING LAYER ── */}
       <GLBModel
         url="/models/headphones_final.glb"
-        position={[-12, 6, -4]}
+        position={primaryHeadphonesPos1}
         scale={1.5}
         floatY={0.25}
         floatSpeed={1.5}
@@ -512,7 +518,7 @@ export default function CentralFeature() {
           <DiscoBallWithLight pos={[-12, 9, -8]} mobileSf={m} />
           <GLBModel
             url="/models/headphones_final.glb"
-            position={[8, 5, 4]}
+            position={primaryHeadphonesPos2}
             scale={1.0}
             floatY={0.18}
             floatSpeed={1.2}
