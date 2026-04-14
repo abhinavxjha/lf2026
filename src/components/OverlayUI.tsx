@@ -112,7 +112,7 @@ function useCountdown() {
 /* =========================================================
    SCROLL REVEAL HOOK
    ========================================================= */
-function useScrollReveal() {
+function useScrollReveal(dep?: unknown) {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -136,7 +136,7 @@ function useScrollReveal() {
 
     elements.forEach((el) => observer.observe(el))
     return () => observer.disconnect()
-  }, [])
+  }, [dep])
 
   return containerRef
 }
@@ -157,7 +157,7 @@ export default function OverlayUI() {
   const [activeDay, setActiveDay] = useState<string | null>(null)
   const [heroFade, setHeroFade] = useState(1)
   const pad = (n: number) => String(n).padStart(2, '0')
-  const revealRef = useScrollReveal()
+  const revealRef = useScrollReveal(activeDay)
 
   // Fade out hero elements as user scrolls
   useEffect(() => {
@@ -334,7 +334,7 @@ export default function OverlayUI() {
                       {dayItems.map((item, idx) => (
                         <div
                           key={idx}
-                          className="itin-perf-card reveal-item"
+                          className="itin-perf-card"
                           data-delay={String(400 + dayIdx * 150 + idx * 80)}
                           style={{
                             '--accent': TYPE_COLORS[item.type],
