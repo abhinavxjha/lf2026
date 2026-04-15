@@ -381,11 +381,10 @@ export default function CentralFeature() {
   const m = sf
   const primaryHeadphonesPos1: [number, number, number] = (isMobile || isTablet)
     ? [-6, 6, -4]
-    : [-6, 6, -4]
+    : [-11, 3, -3] // Adjust the desktop position here
   const primaryHeadphonesPos2: [number, number, number] = (isMobile || isTablet)
     ? [4, 6, 6]
-    : [4, 6, 6]
-
+    : [9, 3, 4] // Adjust the desktop position here
   return (
     <group>
       <HeroTitle />
@@ -503,8 +502,8 @@ export default function CentralFeature() {
 
       <GLBModel
         url="/models/pretty_simple_discoball_final.glb"
-        position={[-5, 8, -6]}
-        scale={1.5}
+        position={[-4.2, 7, 0]}
+        scale={1.3}
         spinSpeed={0.02}
         floatY={0.15}
         floatSpeed={1.0}
@@ -534,8 +533,8 @@ export default function CentralFeature() {
           />
           <GLBModel
             url="/models/pretty_simple_discoball_final.glb"
-            position={[10, 6, -5]}
-            scale={1.0}
+            position={[4.2, 7, 0]}
+            scale={1.3}
             spinSpeed={0.015}
             floatY={0.12}
             floatSpeed={0.9}
