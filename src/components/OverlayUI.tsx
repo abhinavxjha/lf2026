@@ -161,6 +161,7 @@ export default function OverlayUI() {
   const countdown = useCountdown()
   // @ts-ignore
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [showSponsorsMenu, setShowSponsorsMenu] = useState(false)
   // @ts-ignore
   const [activeDay, setActiveDay] = useState<string | null>(null)
   const [heroFade, setHeroFade] = useState(1)
@@ -221,6 +222,7 @@ export default function OverlayUI() {
             <button className="nav-btn" onClick={() => handleNav('itinerary')}>Itinerary</button>
             <button className="nav-btn nav-btn--pink" onClick={() => handleNav('memories')}>Memories</button>
             <button className="nav-btn nav-btn--purple" onClick={() => handleNav('sponsors')}>Sponsors</button>
+            <button className="nav-btn" style={{color: 'var(--teal-light)'}} onClick={() => setShowSponsorsMenu(true)}>Sponsor's Menu</button>
           </div>
 
           <button
@@ -495,6 +497,32 @@ export default function OverlayUI() {
           ].map(([key, label]) => (
             <button key={key} className="mobile-menu-link" onClick={() => handleNav(key)}>{label}</button>
           ))}
+          <button className="mobile-menu-link" onClick={() => { setShowSponsorsMenu(true); setMobileMenuOpen(false); }}>Sponsor's Menu</button>
+        </div>
+      )}
+
+      {/* ===== SPONSORS MENU MODAL ===== */}
+      {showSponsorsMenu && (
+        <div className="sponsors-menu-modal">
+          <div className="sponsors-menu-content">
+            <button className="sponsors-menu-close" onClick={() => setShowSponsorsMenu(false)}>&times;</button>
+            <h2 className="sponsors-menu-title">Sponsor's Menu</h2>
+            <p className="sponsors-menu-subtitle">Select a food sponsor to view their menu:</p>
+            <div className="sponsors-menu-grid">
+              <a href="/images/sponsors/LitTeaChokhaMenu.png" target="_blank" rel="noopener noreferrer" className="sponsor-menu-card">
+                <img src="/images/sponsors/LitTeaChokha.png" alt="Lit Tea Chokha" className="sponsor-menu-logo" />
+                <h3>Lit Tea Chokha</h3>
+              </a>
+              <a href="/images/sponsors/BelgianWaffleMenu.png" target="_blank" rel="noopener noreferrer" className="sponsor-menu-card">
+                <img src="/images/sponsors/BelgianWaffle.png" alt="Belgian Waffles" className="sponsor-menu-logo" />
+                <h3>Belgian Waffles</h3>
+              </a>
+              <a href="/images/sponsors/NescafeMenu.png" target="_blank" rel="noopener noreferrer" className="sponsor-menu-card">
+                <img src="/images/sponsors/nescafe.png" alt="Nescafe" className="sponsor-menu-logo" />
+                <h3>Nescafe</h3>
+              </a>
+            </div>
+          </div>
         </div>
       )}
     </>
